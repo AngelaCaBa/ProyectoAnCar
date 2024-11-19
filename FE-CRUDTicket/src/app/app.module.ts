@@ -8,31 +8,29 @@ import { NuevoticketComponent } from './components/nuevoticket/nuevoticket.compo
 import { ListadoticketComponent } from './components/listadoticket/listadoticket.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-//Angular aterial
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+// Modulos
+import { SharedModule } from './shared/shared.module';
+import { VerticketComponent } from './components/verticket/verticket.component';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NuevoticketComponent,
-    ListadoticketComponent
+    ListadoticketComponent,
+    VerticketComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatFormFieldModule,
-    MatInputModule,
+    SharedModule,
+    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

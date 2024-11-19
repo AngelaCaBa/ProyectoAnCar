@@ -19,6 +19,7 @@ export class ListadoticketComponent implements AfterViewInit {
     'municipioId',
     'asunto',
     'estado',
+    'acciones'
   ];
 
   // DataSource ahora es de tipo MatTableDataSource para soportar paginador, filtro y ordenamiento
