@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Ticket, TicketState } from '../../interfaces/ticket';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-listadoticket',
@@ -19,7 +21,7 @@ export class ListadoticketComponent implements AfterViewInit {
     'municipioId',
     'asunto',
     'estado',
-    'acciones'
+    'acciones',
   ];
 
   // DataSource ahora es de tipo MatTableDataSource para soportar paginador, filtro y ordenamiento
@@ -54,9 +56,13 @@ export class ListadoticketComponent implements AfterViewInit {
     4: 'Otro',
   };
 
+  loading: boolean = false;
+
   // Paginador y ordenamiento
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(private _snackBar: MatSnackBar) {}
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator; // Conecta el paginador
@@ -76,5 +82,16 @@ export class ListadoticketComponent implements AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  eliminarticket() {
+    this.loading = true;
+
+    setTimeout(() => {
+      this.loading = false;
+      this._snackBar.open('El ticket fue eliminado con éxito', '', {
+        duration: 4000, // Duración en milisegundos
+        horizontalPosition: 'right',
+      });
+    }, 3000);
   }
 }

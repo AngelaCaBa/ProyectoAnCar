@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'verticket/:id', component: VerticketComponent },
   { path: 'editarticket', component: NuevoticketComponent },
-  { path: '**}
+  { path: '**', redirectTo: 'listadotickets', pathMatch:'full'}
 ];
 
 @NgModule({
